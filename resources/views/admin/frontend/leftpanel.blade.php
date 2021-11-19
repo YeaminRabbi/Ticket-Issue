@@ -7,8 +7,15 @@
   <div class="sl-sideleft-menu">
     <a href="{{ route('home') }}" class="sl-menu-link">
       <div class="sl-menu-item">
-        <i class="menu-item-icon icon ion-ios-home-outline tx-22"></i>
+        <i class="fa fa-home" aria-hidden="true"></i>
         <span class="menu-item-label">Dashboard</span>
+      </div><!-- menu-item -->
+    </a><!-- sl-menu-link -->
+
+    <a href="{{ route('userCreate') }}" class="sl-menu-link">
+      <div class="sl-menu-item">
+        <i class="fa fa-user" aria-hidden="true"></i>&nbsp;
+        <span class="menu-item-label">User</span>
       </div><!-- menu-item -->
     </a><!-- sl-menu-link -->
 

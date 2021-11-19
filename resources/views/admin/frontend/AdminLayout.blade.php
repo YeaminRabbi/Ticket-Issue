@@ -73,10 +73,16 @@
             User Panel 
           @endif
         </a>
-        <span class="breadcrumb-item active">Dashboard</span>
+        <span class="breadcrumb-item active">@yield('pagename')</span>
       </nav>
 
-          @yield('content')
+
+      
+    <div class="sl-pagebody"><!-- MAIN CONTENT -->
+      @yield('content')
+    </div><!-- sl-pagebody --><!-- END MAIN CONTENT -->
+
+          
       
         
 
