@@ -25,3 +25,4 @@ Route::get('/user-ticket-issue', 'AdminController@ticketIssue')->name('ticketIss
 Route::get('/airlines', 'AdminController@airlines')->name('airlines')->middleware('auth', 'verified');
 Route::post('/create-airlines', 'AdminController@createAirlines')->name('createAirlines')->middleware('auth', 'verified');
 Route::get('/delete-airlines/{id}', 'AdminController@airline_delete')->name('airline_delete')->middleware('auth', 'verified');
+Route::post('/ticket-issue', 'AdminController@ticket_info')->name('ticket_info')->middleware('auth', 'verified');

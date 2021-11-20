@@ -51,7 +51,7 @@
         </div>
         
         <div class="form-layout-footer mg-t-30">
-          <button class="btn btn-info mg-r-5" type="submit">Submit</button>
+          <button class="btn btn-success mg-r-5" type="submit">Create User</button>
           
         </div><!-- form-layout-footer -->
         </form>

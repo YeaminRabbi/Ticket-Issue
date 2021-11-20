@@ -5,6 +5,8 @@ use Illuminate\Http\Request;
 use App\User;
 use App\AirlineName;
 use App\TicketIssue;
+use App\UserPassportDetails;
+
 use Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -95,6 +97,55 @@ class AdminController extends Controller
 
     function airline_delete($id)
     {
-        return $id;
+        
+        $airline=AirlineName::where('id',$id)->first();
+        $airline->delete(); 
+
+        return back();
     }
+
+    function ticket_info(Request $req)
+    {
+        $user_details = new UserPassportDetails;
+        $ticket = new TicketIssue;
+        $user = Auth::user();
+
+
+        $user_details->first_name = $req->firstname;
+        $user_details->last_name = $req->lastname;
+        $user_details->passport_number = $req->passport_number;
+        $user_details->expire_date = $req->expire_date;
+        $user_details->dob = $req->dob;
+        $user_details->save();
+
+        
+
+        $ticket->pnr = $req->pnr;
+        $ticket->user_passport_details_id = $user_details->id;
+        $ticket->destination = $req->destination;
+        $ticket->travel_date = $req->travel_date;
+        $ticket->issue_date = $req->issue_date;
+        $ticket->issue_by =  $user->name;
+        $ticket->issue_from = $req->issue_from;
+        $ticket->purchase_amount = $req->purchase_amount;
+        $ticket->sale_amount = $req->sale_amount;
+        $ticket->ticket_number = $req->ticket_number;
+        $ticket->save();
+
+        return back();
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
 }   
