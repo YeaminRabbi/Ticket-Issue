@@ -21,3 +21,7 @@ Route::get('/home', 'AdminController@index')->name('home')->middleware('auth', '
 
 Route::get('/user-information', 'AdminController@userinformation')->name('userInformation')->middleware('auth', 'verified');
 Route::post('/user-register', 'AdminController@registeruser')->name('userRegister')->middleware('auth', 'verified');
+Route::get('/user-ticket-issue', 'AdminController@ticketIssue')->name('ticketIssue')->middleware('auth', 'verified');
+Route::get('/airlines', 'AdminController@airlines')->name('airlines')->middleware('auth', 'verified');
+Route::post('/create-airlines', 'AdminController@createAirlines')->name('createAirlines')->middleware('auth', 'verified');
+Route::get('/delete-airlines/{id}', 'AdminController@airline_delete')->name('airline_delete')->middleware('auth', 'verified');

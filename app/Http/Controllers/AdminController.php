@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
+use App\AirlineName;
+use App\TicketIssue;
 use Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -20,11 +22,8 @@ class AdminController extends Controller
     
     function userinformation()
     {
-        
-
         $users = User::all();
 
-       
         return view('admin.backend.user.user', [
             'users' => $users
         ]);
@@ -53,4 +52,49 @@ class AdminController extends Controller
 
 
     }
-}
+
+
+    function ticketIssue()
+    {
+        $airlines = AirlineName::all();
+       return view('admin.backend.ticket.ticket_issue_form',[
+           'airlines'=>$airlines
+       ]);
+
+    }
+
+
+    function airlines()
+    {
+
+        $airlines = AirlineName::all();
+        
+        return view('admin.backend.airlines.airlines_details', [
+            'airlines'=>$airlines
+        ]);
+
+    }
+
+
+    function createAirlines(Request $req ){
+
+        $this->validate($req,[
+            'airlines_name' => 'required|string',
+           ]);
+
+        $date= date('d-m-y H:i:s');
+        
+        $airline = new AirlineName;
+        $airline->airlines_name = $req->airlines_name;
+        $airline->created_at = $date;
+        $airline->save();
+
+        return back();
+    }
+
+
+    function airline_delete($id)
+    {
+        return $id;
+    }
+}   

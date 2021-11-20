@@ -25,6 +25,21 @@
       </div><!-- menu-item -->
     </a><!-- sl-menu-link -->
 
+    <a href="{{ route('airlines') }}" class="sl-menu-link">
+      <div class="sl-menu-item">
+        <i class="fa fa-plane" aria-hidden="true"></i>&nbsp;
+        <span class="menu-item-label">Airlines</span>
+      </div><!-- menu-item -->
+    </a><!-- sl-menu-link -->
+
+
+    <a href="{{ route('ticketIssue') }}" class="sl-menu-link">
+      <div class="sl-menu-item">
+        <i class="fa fa-ticket" aria-hidden="true"></i>&nbsp;
+        <span class="menu-item-label">Issue Ticket</span>
+      </div><!-- menu-item -->
+    </a><!-- sl-menu-link -->
+
     
       
   </div><!-- sl-sideleft-menu -->
