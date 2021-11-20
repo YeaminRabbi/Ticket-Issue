@@ -1,5 +1,11 @@
 <!-- ########## START: LEFT PANEL ########## -->
-<div class="sl-logo"><a href=""><i class="icon ion-android-star-outline"></i> Admin Panel</a></div>
+<div class="sl-logo"><a href=""><i class="icon ion-android-star-outline"></i> 
+  @if (Auth::user()->role == 'admin')
+    Admin Panel 
+  @else
+    User Panel 
+  @endif
+  </a></div>
 <div class="sl-sideleft">
  
 
@@ -12,7 +18,7 @@
       </div><!-- menu-item -->
     </a><!-- sl-menu-link -->
 
-    <a href="{{ route('userCreate') }}" class="sl-menu-link">
+    <a href="{{ route('userInformation') }}" class="sl-menu-link">
       <div class="sl-menu-item">
         <i class="fa fa-user" aria-hidden="true"></i>&nbsp;
         <span class="menu-item-label">User</span>

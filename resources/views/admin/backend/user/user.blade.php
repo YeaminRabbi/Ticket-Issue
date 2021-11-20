@@ -72,29 +72,47 @@
         <table class="table table-white table-responsive mg-b-0 tx-12">
           <thead>
             <tr class="tx-10">
-              <th class="pd-y-5">Username</th>
-              <th class="pd-y-5">Type</th>
-              <th class="pd-y-5">Date</th>
+              <th class="pd-y-5">SL</th>
+              <th class="pd-y-5">Name</th>
+              <th class="pd-y-5">Email</th>
+
+              <th class="pd-y-5">Role</th>
+              <th class="pd-y-5">Created At</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              
-              <td>
-                <a href="" class="tx-inverse tx-14 tx-medium d-block">Mark K. Peters</a>
-                <span class="tx-11 d-block">TRANSID: 1234567890</span>
-              </td>
-              <td class="tx-12">
-                <span class="square-8 bg-success mg-r-5 rounded-circle"></span> Email verified
-              </td>
-              <td>Just Now</td>
-            </tr>
+            @foreach ($users as $key => $data)
+              <tr>
+                
+                <td  class="tx-12">
+                  {{$key+1}}
+                </td>
+
+                
+                <td class="tx-12">
+                  {{ $data->name }}
+                </td>
+                
+                <td  class="tx-12">
+                  {{$data->email}}
+                </td>
+                
+                <td class="tx-12">
+                  {{ $data->role }}
+                </td>
+
+                <td class="tx-12">
+                  {{ $data->created_at->format('d - m -Y') }}
+                </td>
+
+              </tr>
+            @endforeach
+            
+            
            
           </tbody>
         </table>
-        <div class="card-footer tx-12 pd-y-15 bg-transparent bd-t bd-gray-200">
-          <a href=""><i class="fa fa-angle-down mg-r-5"></i>View All Transaction History</a>
-        </div><!-- card-footer -->
+        
       </div><!-- card -->
     </div><!-- col-6 -->
   </div><!-- row -->

@@ -19,5 +19,5 @@ Route::get('/', function () {
 Auth::routes(['verify' => true]);
 Route::get('/home', 'AdminController@index')->name('home')->middleware('auth', 'verified');
 
-Route::get('/user-information', 'AdminController@createuser')->name('userCreate')->middleware('auth', 'verified');
+Route::get('/user-information', 'AdminController@userinformation')->name('userInformation')->middleware('auth', 'verified');
 Route::post('/user-register', 'AdminController@registeruser')->name('userRegister')->middleware('auth', 'verified');

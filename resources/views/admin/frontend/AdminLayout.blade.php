@@ -7,12 +7,7 @@
 
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('admin/img/f-white.png') }}">
     <title>
-     
-      @if (Auth::user()->role == 'admin')
-        Admin Panel 
-      @else
-        User Panel 
-      @endif
+       Mafi Airlines
     </title>
 
     <!-- vendor css -->

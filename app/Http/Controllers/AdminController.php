@@ -13,24 +13,21 @@ class AdminController extends Controller
 
    public function index()
    {    
-        $user = Auth::user();
-        if($user->role != 'admin')
-        {
-            return view('404NotFound');
-        }
+        
 
        return view('admin.frontend.index');
    }
     
-    function createuser()
+    function userinformation()
     {
-        $user = Auth::user();
-        if($user->role != 'admin')
-        {
-            return view('404NotFound');
-        }
+        
 
-        return view('admin.backend.user.user');
+        $users = User::all();
+
+       
+        return view('admin.backend.user.user', [
+            'users' => $users
+        ]);
     }
 
 
