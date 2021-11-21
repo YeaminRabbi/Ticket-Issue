@@ -106,6 +106,25 @@ class AdminController extends Controller
 
     function ticket_info(Request $req)
     {
+
+        $this->validate($req,[
+            'firstname' => 'required|string',
+            'lastname' => 'required|string',
+            'passport_number' => 'required|string',
+            'expire_date' => 'required|string',
+            'dob' => 'required|string',
+            'pnr' => 'required|string',
+            'destination' => 'required|string',
+            'travel_date' => 'required|string',
+            'issue_date' => 'required|string',
+            'issue_from' => 'required|string',
+            'purchase_amount' => 'required|string',
+            'sale_amount' => 'required|string',
+            'ticket_number' => 'required|string',
+            
+           ]);
+
+
         $user_details = new UserPassportDetails;
         $ticket = new TicketIssue;
         $user = Auth::user();
@@ -139,10 +158,32 @@ class AdminController extends Controller
     }
 
 
+    function ticketRecords()
+    {
+
+        $ticket_list = TicketIssue::orderBy('created_at', 'desc')->get();
+
+        
+        return view('admin.backend.ticket.ticket_list',[
+            'ticket_list'=> $ticket_list
+        ]);
+    }
 
 
 
+    function ticket_details($id)
+    {
+        $ticket = TicketIssue::where('id', $id)->first();
+        $user_passport = UserPassportDetails::where('id',$ticket->user_passport_details_id)->first();
 
+
+        return view('admin.backend.ticket.ticket_details',[
+            'ticket'=> $ticket,
+            'user_passport'=>$user_passport
+        ]);
+
+
+    }
 
 
 

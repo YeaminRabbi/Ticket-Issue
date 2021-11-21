@@ -40,7 +40,12 @@
       </div><!-- menu-item -->
     </a><!-- sl-menu-link -->
 
-    
+    <a href="{{ route('ticketRecords') }}" class="sl-menu-link">
+      <div class="sl-menu-item">
+        <i class="fa fa-list-ul" aria-hidden="true"></i>&nbsp;
+        <span class="menu-item-label">Ticket Records</span>
+      </div><!-- menu-item -->
+    </a><!-- sl-menu-link -->
       
   </div><!-- sl-sideleft-menu -->
 

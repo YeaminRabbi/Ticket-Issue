@@ -15,7 +15,11 @@
     <link href="{{ asset('admin/lib/Ionicons/css/ionicons.css') }}" rel="stylesheet">
     <link href="{{ asset('admin/lib/perfect-scrollbar/css/perfect-scrollbar.css') }}" rel="stylesheet">
     <link href="{{ asset('admin/lib/rickshaw/rickshaw.min.css') }}" rel="stylesheet">
+    
+    <link href="{{ asset('admin/lib/datatables/jquery.dataTables.css') }}" rel="stylesheet">
+    <link href="{{ asset('admin/lib/select2/css/select2.min.css') }}" rel="stylesheet">
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw==" crossorigin="anonymous"></script>
     <!-- Starlight CSS -->
     <link rel="stylesheet" href="{{ asset('admin/css/starlight.css') }}">
   </head>
@@ -112,6 +116,9 @@
     <script src="{{ asset('admin/js/starlight.js') }}"></script>
     <script src="{{ asset('admin/js/ResizeSensor.js') }}"></script>
     <script src="{{ asset('admin/js/dashboard.js') }}"></script>
+
+    <script src="{{ asset('admin/lib/datatables/jquery.dataTables.js') }}"></script>
+    <script src="{{ asset('admin/lib/datatables-responsive/dataTables.responsive.js') }}"></script>
 
     @yield('footer_js')
   </body>
