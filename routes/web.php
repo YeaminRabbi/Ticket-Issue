@@ -33,3 +33,5 @@ Route::get('/ticket-records', 'AdminController@ticketRecords')->name('ticketReco
 Route::get('/ticket-details/{id}', 'AdminController@ticket_details')->name('ticket_details')->middleware('auth', 'verified');
 Route::get('/random-data', 'AdminController@randomData')->name('randomData')->middleware('auth', 'verified');
 Route::get('/export-data', 'AdminController@ExportExcel')->name('ExportExcel')->middleware('auth', 'verified');
+Route::get('/export-date', 'AdminController@ExportExcelDateView')->name('ExportExcelDateView')->middleware('auth', 'verified');
+Route::post('/export-From-To', 'AdminController@ExportExcelDateFromTo')->name('ExportExcelDateFromTo')->middleware('auth', 'verified');

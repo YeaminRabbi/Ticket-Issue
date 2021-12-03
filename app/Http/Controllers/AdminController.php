@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Carbon\Carbon;
 use App\Exports\DataExportExcel;
+use App\Exports\DataExportExcelByDate;
 use Maatwebsite\Excel\Facades\Excel;
 
 
@@ -250,4 +251,21 @@ class AdminController extends Controller
         return Excel::download(new DataExportExcel, 'Ticket-Records.xlsx');
     }
 
+
+    function ExportExcelDateView()
+    {
+        return view('admin.exports.byDate');
+    }
+
+
+    function ExportExcelDateFromTo(Request $request)
+    {
+
+        
+        $from = $request->start;
+        $to = $request->end;
+ 
+        return Excel::download(new DataExportExcelByDate($from,$to), 'Ticket-Records.xlsx');
+ 
+    }
 }   

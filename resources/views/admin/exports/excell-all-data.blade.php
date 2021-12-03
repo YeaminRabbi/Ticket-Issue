@@ -7,6 +7,8 @@
 
         <th>Pnr</th>
         <th>Issue Date</th>
+        <th>Created At</th>
+
 
     </tr>
     </thead>
@@ -18,6 +20,7 @@
             <td>{{ $data->passport_info->last_name }}</td>
             <td>{{ $data->pnr }}</td>
             <td>{{ $data->issue_date }}</td>
+            <td>{{ $data->created_at }}</td>
 
         </tr>
     @endforeach
