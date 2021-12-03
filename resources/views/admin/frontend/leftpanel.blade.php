@@ -18,12 +18,17 @@
       </div><!-- menu-item -->
     </a><!-- sl-menu-link -->
 
+
+    @if (Auth::user()->role == 'admin')
     <a href="{{ route('userInformation') }}" class="sl-menu-link">
       <div class="sl-menu-item">
         <i class="fa fa-user" aria-hidden="true"></i>&nbsp;
         <span class="menu-item-label">User</span>
       </div><!-- menu-item -->
     </a><!-- sl-menu-link -->
+   
+    @endif
+   
 
     <a href="{{ route('airlines') }}" class="sl-menu-link">
       <div class="sl-menu-item">
@@ -44,6 +49,21 @@
       <div class="sl-menu-item">
         <i class="fa fa-list-ul" aria-hidden="true"></i>&nbsp;
         <span class="menu-item-label">Ticket Records</span>
+      </div><!-- menu-item -->
+    </a><!-- sl-menu-link -->
+
+
+    {{--  <a href="{{ route('randomData') }}" class="sl-menu-link">
+      <div class="sl-menu-item">
+        <i class="fa fa-list-ul" aria-hidden="true"></i>&nbsp;
+        <span class="menu-item-label">Generate Random Data</span>
+      </div><!-- menu-item -->
+    </a><!-- sl-menu-link -->  --}}
+
+    <a href="{{ route('ExportExcel') }}" class="sl-menu-link">
+      <div class="sl-menu-item">
+        <i class="fa fa-list-ul" aria-hidden="true"></i>&nbsp;
+        <span class="menu-item-label">Export Excel</span>
       </div><!-- menu-item -->
     </a><!-- sl-menu-link -->
       

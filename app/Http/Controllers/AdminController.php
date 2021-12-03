@@ -6,10 +6,14 @@ use App\User;
 use App\AirlineName;
 use App\TicketIssue;
 use App\UserPassportDetails;
-
+use Illuminate\Support\Str;
 use Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Carbon\Carbon;
+use App\Exports\DataExportExcel;
+use Maatwebsite\Excel\Facades\Excel;
+
 
 class AdminController extends Controller
 {
@@ -24,11 +28,18 @@ class AdminController extends Controller
     
     function userinformation()
     {
-        $users = User::all();
+        $user = Auth::user();
+        if($user->role == 'admin'){
+            $users = User::all();
 
-        return view('admin.backend.user.user', [
-            'users' => $users
-        ]);
+            return view('admin.backend.user.user', [
+                'users' => $users
+            ]);
+        }
+        else{
+            return view('404NotFound');
+        }
+        
     }
 
 
@@ -186,7 +197,57 @@ class AdminController extends Controller
     }
 
 
+    function randomData()
+    {
+        $user = Auth::user();
+        $airlines = AirlineName::all();
+        $airlist =[];
+        foreach($airlines as $key => $data)
+        {
+            $airlist[$key] = $data->airlines_name;
+        }
+
+       for($i=0;$i<50;$i++)
+       {
+            //passport data algorithm
+            $user_details = new UserPassportDetails;
+            
+
+            $user_details->first_name = Str::random(10);
+            $user_details->last_name = Str::random(10);
+            $user_details->passport_number =substr(str_shuffle("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 9);
+            $user_details->last_name = Str::random(10);
+            $user_details->expire_date= Carbon::today()->subDays(rand(0, 6000))->format('Y-m-d');
+            $user_details->dob= Carbon::today()->subDays(rand(0, 6000))->format('Y-m-d');
+            $user_details->save();
+
+            //ticket issue algorithm
+            $ticket = new TicketIssue;
+            
+            $ticket->pnr = substr(str_shuffle("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 8);
+            $ticket->user_passport_details_id = $user_details->id;
+            $ticket->destination = Str::random(10);
+            $ticket->travel_date = Carbon::today()->subDays(rand(0, 368))->format('Y-m-d');
+            $ticket->issue_date = Carbon::today()->subDays(rand(0, 368))->format('Y-m-d');
+            $ticket->issue_by =  $user->name;
+
+          
+            $ticket->issue_from = $airlist[2];
+            $ticket->purchase_amount = rand(4000,40000);
+            $ticket->sale_amount = rand(5000,50000);
+            $ticket->ticket_number = substr(str_shuffle("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 8);
+            $ticket->save();
+       }
+       
+        return view('admin.frontend.index');
+
+       
+    }
 
 
+    function ExportExcel()
+    {
+        return Excel::download(new DataExportExcel, 'Ticket-Records.xlsx');
+    }
 
 }   

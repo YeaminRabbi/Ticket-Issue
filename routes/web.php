@@ -13,9 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/', 'AdminController@index')->name('home')->middleware('auth', 'verified');
+
 Auth::routes(['verify' => true]);
 Route::get('/home', 'AdminController@index')->name('home')->middleware('auth', 'verified');
 
@@ -28,3 +31,5 @@ Route::get('/delete-airlines/{id}', 'AdminController@airline_delete')->name('air
 Route::post('/ticket-issue', 'AdminController@ticket_info')->name('ticket_info')->middleware('auth', 'verified');
 Route::get('/ticket-records', 'AdminController@ticketRecords')->name('ticketRecords')->middleware('auth', 'verified');
 Route::get('/ticket-details/{id}', 'AdminController@ticket_details')->name('ticket_details')->middleware('auth', 'verified');
+Route::get('/random-data', 'AdminController@randomData')->name('randomData')->middleware('auth', 'verified');
+Route::get('/export-data', 'AdminController@ExportExcel')->name('ExportExcel')->middleware('auth', 'verified');
